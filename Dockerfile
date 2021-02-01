@@ -8,7 +8,7 @@
 # This is the generic base for  #
 # all other dockers to follow   #
 #################################
-FROM docker.io/alpine:edge AS setup
+FROM docker.io/alpine:3.13 AS setup
 ARG TARGETPLATFORM
 
 RUN apk add --no-cache -X http://dl-cdn.alpinelinux.org/alpine/edge/testing libgcc \
@@ -34,7 +34,7 @@ ARG TARGETPLATFORM
 # Until Alpine merges gst-rtsp-server into a release, pull all Gstreamer packages
 # from the "testing" release
 RUN apk add --no-cache \
-    -X http://dl-cdn.alpinelinux.org/alpine/edge/main \
+    #-X http://dl-cdn.alpinelinux.org/alpine/v3.12/main \
     -X http://dl-cdn.alpinelinux.org/alpine/edge/testing \
   gst-rtsp-server-dev
 RUN apk add --no-cache musl-dev gcc
